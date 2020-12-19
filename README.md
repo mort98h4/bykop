@@ -1,1 +1,1 @@
-# bykop
+# 2. semester eksamen Københavns Erhvervsakademi
