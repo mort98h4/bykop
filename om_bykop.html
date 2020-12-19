@@ -104,15 +104,16 @@
         // Venter på at DOM'en er indlæst
         document.addEventListener("DOMContentLoaded", start);
 
-        // Henter siden Kontakt fra WP
+        // Henter siden Om ByKop fra WP
         async function start() {
             console.log("start");
-            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/15";
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/13";
             let jsonData = await fetch(url);
             thePage = await jsonData.json();
             console.log(thePage);
 
             document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
+            document.querySelector(".splash_text").innerHTML = thePage.content.rendered;
 
             getTheSkyline();
         }

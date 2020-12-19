@@ -201,7 +201,7 @@
             console.log(thePage);
 
             document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
-            getTheCategories();
+            getTheSkyline();
         }
 
         // Henter skyline grafikken fra WP
@@ -213,6 +213,7 @@
             console.log(theSkyline);
 
             document.querySelector(".skyline").backgroundImage = `url(${theSkyline.splash_image.guid})`;
+            getTheCategories();
         }
 
         // Henter kategorier fra WP
@@ -310,7 +311,7 @@
                 clone.querySelector("h2").textContent = product.title.rendered;
                 clone.querySelector("p").innerHTML = product.description;
 
-                // Gør hver enkelt produkt klikbart
+                // Gør hver enkelt produkt klikbart, og sender parametret id med til funktionen productClick
                 clone.querySelector(".product").addEventListener("click", function() {
                     productClick(product.id);
                 })
