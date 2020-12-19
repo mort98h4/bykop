@@ -8,8 +8,37 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        .arrows {
+            width: 100vw;
+            display: grid;
+            grid-template-areas: "arrow_left arrow_right";
+            justify-content: space-between;
+            margin-top: -260px;
+            margin-bottom: 60px;
+            position: relative;
+            cursor: none;
+            pointer-events: none;
+        }
+
+        .arrows img {
+            width: 50px;
+            cursor: pointer;
+            pointer-events: visible;
+        }
+
+        @media (min-width: 700px) {
+            .arrow_left img {
+                margin-left: 2rem;
+            }
+
+            .arrow_right img {
+                margin-right: 2rem;
+            }
+        }
+
         /*styler splash*/
         #splash_kopper {
+            margin-top: 100px;
             display: grid;
             grid-template-areas: "produkt""skyline";
             overflow-x: scroll;
@@ -18,13 +47,12 @@
 
         .skyline_test {
             grid-area: skyline;
-            background-image: url(imgs/skyline3.png);
-            border-bottom: 30px solid #D9CFC7;
+            background-image: url(imgs/skyline4.png);
             width: 100%;
             height: 210px;
             background-position: center;
             background-repeat: no-repeat;
-            background-size: contain;
+            background-size: cover;
             margin-top: -170px;
             z-index: -1;
         }
@@ -40,6 +68,8 @@
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
+            margin: 0 auto;
+
         }
 
         #filter_buttons img {
@@ -52,7 +82,6 @@
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-
         }
 
         /*sætter rund bg på filterknapper*/
@@ -68,7 +97,19 @@
             margin: 0 auto;
             display: grid;
             grid-template-areas: "left right";
-            padding-top: 2rem;
+            padding-top: 5rem;
+            overflow-x: hidden;
+        }
+
+        .product:first-child {
+
+            margin-top: 100px;
+
+        }
+
+        .product:last-child {
+            padding-bottom: 5rem;
+
         }
 
         .product_image {
@@ -81,6 +122,7 @@
             align-items: center;
             justify-content: flex-end;
             margin-left: -130px;
+            z-index: -2;
         }
 
         .product_image img {
@@ -99,6 +141,7 @@
 
         .product:nth-of-type(2) {
             grid-template-areas: "right left";
+
         }
 
         .product:nth-of-type(2) .product_image {
@@ -117,6 +160,89 @@
             justify-content: center;
         }
 
+        @media (min-width: 700px) {
+
+            #splash_kopper {
+                margin-top: 200px;
+            }
+
+            .product {
+                max-width: 80%;
+                margin: 0 auto;
+
+            }
+
+            .product_image {
+                justify-content: center;
+                margin-left: 0px;
+            }
+
+            .product_text {
+                width: 300px;
+                align-items: flex-start;
+                justify-content: center;
+                justify-self: self-end;
+            }
+
+            .product:nth-of-type(2) .product_image {
+                align-items: center;
+                justify-content: center;
+                margin-right: 0px;
+                margin-left: 0px;
+                justify-self: self-end;
+            }
+
+            .product:nth-of-type(2) .product_text {
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: center;
+                justify-self: flex-start;
+
+            }
+
+        }
+
+        @media (min-width: 700px) {
+            .product:first-child {
+                padding-top: 5rem;
+                margin-top: 200px;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .product {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding-top: 10rem;
+            }
+
+            .product:last-child {
+                padding-bottom: 5rem;
+
+            }
+
+            .product:first-child {
+                padding-top: 5rem;
+                margin-top: 200px;
+
+            }
+
+            .product_image {
+                height: 400px;
+                width: 400px;
+            }
+
+            .product_image img {
+                max-width: 300px;
+            }
+
+            .product_text {
+                width: 500px;
+            }
+
+
+
+        }
     </style>
 
 </head>
@@ -144,8 +270,10 @@
         </nav>
     </header>
     <!-- Splashsektion med filtreringsknapper -->
+
+
     <section id="splash_kopper">
-        <div class="arrow_left"></div>
+
         <nav id="filter_buttons">
             <div class="filter_button">
                 <img src="imgs/produkter.png" alt="">
@@ -153,8 +281,19 @@
             <div class="filter_buttons"></div>
         </nav>
         <div class="skyline"></div>
-        <div class="arrow_right"></div>
+        <div class="skyline_test"></div>
+
     </section>
+    <section class="arrows">
+        <div class="arrow_left">
+            <img src="imgs/arrow_left.svg" alt="pil">
+        </div>
+        <div class="arrow_right">
+            <img src="imgs/arrow_right.svg" alt="pil">
+        </div>
+    </section>
+
+
     <main>
         <!-- Tom sektion hvor produkterne bliver hentet ind via JS -->
         <section id="products"></section>
@@ -326,8 +465,5 @@
             console.log(id);
             location.href = "singleview.html?id=" + id;
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
