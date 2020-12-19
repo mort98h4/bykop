@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        /*Styler pilene i splash section*/
         .arrows {
             width: 100vw;
             display: grid;
@@ -44,7 +45,6 @@
             overflow-x: scroll;
         }
 
-
         .skyline_test {
             grid-area: skyline;
             background-image: url(imgs/skyline4.png);
@@ -57,19 +57,12 @@
             z-index: -1;
         }
 
-        @media (min-width: 1024px) {
-            .skyline_test {
-                height: 208px;
-            }
-        }
-
         #filter_buttons {
             grid-area: produkt;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             margin: 0 auto;
-
         }
 
         #filter_buttons img {
@@ -91,6 +84,21 @@
             margin: 3rem;
         }
 
+
+        @media (min-width: 1024px) {
+            .skyline_test {
+                height: 208px;
+            }
+
+
+            #filter_buttons img {
+                max-width: 100px;
+                margin: 4rem
+            }
+
+
+        }
+
         /*styler produkterne*/
         .product {
             max-width: 1200px;
@@ -102,14 +110,11 @@
         }
 
         .product:first-child {
-
             margin-top: 100px;
-
         }
 
         .product:last-child {
             padding-bottom: 5rem;
-
         }
 
         .product_image {
@@ -160,6 +165,7 @@
             justify-content: center;
         }
 
+        /*styler produkterne for min 700px skærm*/
         @media (min-width: 700px) {
 
             #splash_kopper {
@@ -198,18 +204,19 @@
                 justify-content: center;
                 justify-self: flex-start;
 
+
             }
 
-        }
-
-        @media (min-width: 700px) {
             .product:first-child {
                 padding-top: 5rem;
                 margin-top: 200px;
             }
+
         }
 
-        @media (min-width: 1100px) {
+
+        /*styler produkterne for min 1014px skærm*/
+        @media (min-width: 1024px) {
             .product {
                 max-width: 1100px;
                 margin: 0 auto;
@@ -239,9 +246,6 @@
             .product_text {
                 width: 500px;
             }
-
-
-
         }
     </style>
 
