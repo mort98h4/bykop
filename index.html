@@ -12,12 +12,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 
     <style>
+        /*Styler pilene i splash section*/
+        .arrows {
+            width: 100vw;
+            display: grid;
+            grid-template-areas: "arrow_left arrow_right";
+            justify-content: space-between;
+            margin-top: -240px;
+            margin-bottom: 60px;
+            position: relative;
+            cursor: none;
+            pointer-events: none;
+        }
+
+        .arrows img {
+            width: 50px;
+            cursor: pointer;
+            pointer-events: visible;
+        }
+
+        @media (min-width: 700px) {
+            .arrows {
+                margin-top: -300px;
+            }
+
+            .arrow_left img {
+                margin-left: 2rem;
+            }
+
+            .arrow_right img {
+                margin-right: 2rem;
+            }
+        }
+
+        /*Styler video*/
         video {
             width: 100vw;
             object-fit: cover;
         }
 
-        /* style på splash section*/
+        @media (min-width: 700px) {
+            video {
+                width: 70%;
+                display: flex;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 1424px) {
+            video {
+                width: 1200px;
+            }
+        }
+
+
+        /* styler splash section og tilføjer grid*/
         .splash_section_top {
             margin-top: 100px;
             display: grid;
@@ -31,6 +80,7 @@
             }
         }
 
+        /*sætter ikonerne i grid*/
         .splash_icon1 {
             grid-area: container1;
         }
@@ -47,33 +97,39 @@
             grid-area: container4;
         }
 
+        /*styler pigerne*/
         .character {
             height: 200px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            margin-right: 200px;
+
             align-self: end;
+            margin-bottom: -40px;
         }
 
+        /*sætter pigerne i grid*/
         .character1 {
             background-image: url(imgs/pige_kigger.png);
             grid-area: container1;
+            margin-right: 200px;
         }
 
         .character2 {
             background-image: url(imgs/pige_g%C3%A5r_kop.png);
             grid-area: container2;
+            margin-right: 200px;
         }
 
         .character3 {
             background-image: url(imgs/pige_retur.png);
             grid-area: container4;
+            margin-right: 150px;
         }
 
         @media (min-width: 700px) {
             .character {
-                margin-bottom: -20px;
+                margin-bottom: -100px;
                 height: 250px;
             }
         }
@@ -100,7 +156,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            margin-top: -170px;
+            margin-top: -100px;
             z-index: -1;
 
         }
@@ -113,14 +169,14 @@
 
         .splash_icon {
             background-color: #F7F7F7;
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 3rem;
-            height: 300px;
-            width: 300px;
+            height: 250px;
+            width: 250px;
         }
 
         .splash_icon img {
@@ -133,15 +189,17 @@
             grid-template-areas: "left right";
         }
 
+        /*hej*/
         .round_bg {
             grid-area: left;
             background-color: #d9cfc8;
             border-radius: 0% 50% 50% 50%;
             margin-left: -50px;
             /* display: flex; */
-            margin-top: -20px;
+
             width: 200px;
             height: 200px;
+            margin-top: 100px;
         }
 
 
@@ -150,41 +208,39 @@
         .round_bg img {
             width: 200px;
             padding: 2rem;
-
         }
 
         @media (min-width: 1024px) {
             .round_bg {
-                width: 60rem;
-                height: 60rem;
+                width: 50rem;
+                height: 50rem;
                 display: flex;
                 justify-content: center;
                 align-items: flex-end;
-                margin-top: -60px;
+                margin-top: 120px;
                 margin-left: -160px;
                 z-index: -2
             }
 
             .round_bg img {
-                width: 50rem;
+                width: 37rem;
+                margin-bottom: 5rem
             }
-
         }
 
         .splash_text {
             grid-area: right;
             margin: 1rem;
+            margin-top: 200px;
         }
 
         /* style på facts sektion*/
         #facts {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            grid-gap: 2rem;
             max-width: 1200px;
             margin: 0 auto
         }
-
 
         .fact {
             height: 300px;
@@ -192,7 +248,6 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -200,26 +255,32 @@
         }
 
         .about_text {
-            width: 80%;
-            height: 100%;
+            width: 300px;
             margin: 0 auto;
         }
 
-        @media (min-width: 1024px) {
-            #facts {
+        .about_text h2 {
+            margin-top: 2rem
+        }
 
+        .about_text .about_button {
+            margin-bottom: 5rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 1424px) {
+            #facts {
                 grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-                grid-gap: 0rem;
             }
 
             .fact {
                 height: 500px;
                 width: 500px;
-
             }
 
             .splash_text {
                 max-width: 600px;
+                margin-top: 250px;
             }
 
             .splash_text h2 {
@@ -227,12 +288,10 @@
             }
 
             .about_text {
-                width: 80%;
-                height: 100%;
+                width: 1200px;
                 margin: 0 auto;
             }
         }
-
     </style>
 </head>
 
@@ -261,8 +320,6 @@
     <!-- Splashsektion med infografik -->
     <section id="splash_index">
         <div class="splash_section_top">
-            <div class="arrow_left"></div>
-
             <div class="splash_icon1 splash_icon">
                 <img src="" alt="">
             </div>
@@ -274,14 +331,21 @@
             </div>
             <div class="splash_icon4 splash_icon">
                 <img src="" alt="">
-
             </div>
             <div class="character1 character"></div>
             <div class="character2 character"></div>
             <div class="character3 character"></div>
             <div class="skyline"></div>
             <div class="skyline_test"></div>
-            <div class="arrow_right"></div>
+
+        </div>
+        <div class="arrows">
+            <div class="arrow_left">
+                <img src="imgs/arrow_left.svg" alt="pil">
+            </div>
+            <div class="arrow_right">
+                <img src="imgs/arrow_right.svg" alt="pil">
+            </div>
         </div>
         <div class="splash_index_bottom">
             <div class="round_bg">
@@ -459,8 +523,5 @@
                 dest.appendChild(clone);
             })
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
