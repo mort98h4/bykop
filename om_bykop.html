@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <!-- Globalmenu -->
+        <nav id="menu">
+            <!-- Klikbart logo, der går til forsiden -->
+            <img id="logo" src="imgs/bykop_logo-8.png">
+            <!-- Menupunkter -->
+            <div class="nav_links">
+                <a href="kopper.html">Produkter</a>
+                <a href="om_bykop.html">Om ByKop</a>
+                <a href="find_bykop.html">Find ByKop</a>
+                <a href="kontakt.html">Kontakt & FAQ</a>
+                <a href="erhverv.html">Erhverv</a>
+            </div>
+            <!-- Burgermenu -->
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <!-- Splash sektion -->
+    <section id="splash_ombykop">
+        <div class="splash_text"></div>
+        <div class="skyline"></div>
+    </section>
+    <main>
+        <!-- Sektion med oplysninger, der hentes fra WP -->
+        <section id="about">
+            <div class="about_headers"></div>
+            <div class="about_texts"></div>
+        </section>
+        <!-- Sektion med medarbejdere, der hentes fra WP -->
+        <section id="team">
+            <div class="team_top">
+                <div class="arrow_left"></div>
+                <nav id="filter_buttons">
+                    <div class="filter_button" data-id="alle">
+                        <img src="imgs/team.png" alt="">
+                    </div>
+                    <div class="filter_buttons"></div>
+                </nav>
+                <div class="arrow_right"></div>
+            </div>
+            <div class="team_bottom">
+
+            </div>
+        </section>
+
+        <!-- Templates -->
+        <template id="about_headers_template">
+            <article class="about_header">
+                <h3></h3>
+            </article>
+        </template>
+
+        <template id="about_text_template">
+            <article class="about_text">
+            </article>
+        </template>
+
+        <template id="filter_button_template">
+            <div class="filter_button">
+                <img src="" alt="">
+            </div>
+        </template>
+        <template id="employees">
+            <article class="employee">
+                <div class="employee_image">
+                    <img src="" alt="">
+                </div>
+                <div class="employee_text">
+                    <h2></h2>
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </article>
+        </template>
+    </main>
+    <footer></footer>
+    <script src="script.js"></script>
+    <script>
+        "use strict"
+
+        // Variabler
+        let thePage;
+        let theSkyline;
+        let theAbouts;
+        let aboutFilter;
+        let theEmployees;
+        let employeeFilter;
+
+        // Venter på at DOM'en er indlæst
+        document.addEventListener("DOMContentLoaded", start);
+
+        // Henter siden Kontakt fra WP
+        async function start() {
+            console.log("start");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/15";
+            let jsonData = await fetch(url);
+            thePage = await jsonData.json();
+            console.log(thePage);
+
+            document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
+
+            getTheSkyline();
+        }
+
+        // Henter skyline grafikken fra WP
+        async function getTheSkyline() {
+            console.log("getTheSkyeline");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/121";
+            let jsonData = await fetch(url);
+            theSkyline = await jsonData.json();
+            console.log(theSkyline);
+
+            document.querySelector(".skyline").backgroundImage = `url(${theSkyline.splash_image.guid})`;
+
+            getTheAbouts();
+        }
+
+        // Henter abouts fra WP
+        async function getTheAbouts() {
+            console.log("start");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/about";
+            let jsonData = await fetch(url);
+            theAbouts = await jsonData.json();
+            console.log(theAbouts);
+
+            // Genererer de klikbare about overskrifter
+            let dest = document.querySelector(".about_headers");
+            let temp = document.querySelector("#about_headers_template");
+
+            dest.innerHTML = "";
+
+            theAbouts.forEach(header => {
+                let clone = temp.cloneNode(true).content;
+                clone.querySelector("h3").textContent = header.title.rendered;
+                clone.querySelector(".about_header").dataset.id = header.id;
+                clone.querySelector(".about_header").addEventListener("click", filterAbouts);
+
+                dest.appendChild(clone);
+            })
+
+            // Kalder funktionen showAbout på samme måde, som hvis man klikker about overskriften med ID'et 48
+            showAbouts(aboutFilter = "48");
+            getTheEmployees();
+        }
+
+        // Genererer indholdet der matcher den about overskrift der er klikket på
+        function showAbouts() {
+            console.log("showAbouts");
+            let dest = document.querySelector(".about_texts");
+            let temp = document.querySelector("#about_text_template");
+
+            dest.innerHTML = "";
+
+            theAbouts.forEach(about => {
+                if (aboutFilter == about.id) {
+                    console.log(about);
+                    let clone = temp.cloneNode(true).content;
+
+                    clone.querySelector(".about_text").innerHTML = about.description;
+
+                    dest.appendChild(clone);
+                }
+            })
+        }
+
+        // Udskriver ID'et på den overskrift der er klikket på i konsollen.
+        function filterAbouts() {
+            console.log("ID", this.dataset.id);
+            // Ændrer aboutFilter til det ID som den klikkede overskrift har, og kalder showAbouts med det ID.
+            aboutFilter = this.dataset.id;
+            showAbouts();
+        }
+
+        // Henter employees fra WP
+        async function getTheEmployees() {
+            console.log("getTheEmployees");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/employee";
+            let jsonData = await fetch(url);
+            theEmployees = await jsonData.json();
+            console.log(theEmployees);
+
+            // Genererer de klikbare employee ikoner, og gør det "originale" ikon klikbart
+            let dest = document.querySelector(".filter_buttons");
+            let temp = document.querySelector("#filter_button_template");
+
+            document.querySelector(".filter_button").addEventListener("click", filterEmployees);
+
+            dest.innerHTML = "";
+
+            theEmployees.forEach(employee => {
+                let clone = temp.cloneNode(true).content;
+                clone.querySelector("img").src = employee.image.guid;
+                clone.querySelector(".filter_button").dataset.id = employee.id;
+                clone.querySelector(".filter_button").addEventListener("click", filterEmployees);
+                dest.appendChild(clone);
+            })
+
+            // Kalder funktionen showEmployees på samme måde, som hvis man klikker på employee ikonet med ID'et "alle".
+            showEmployees(employeeFilter = "alle");
+        }
+
+        // Genererer indholdet der matcher det employee ikon der er klikket på
+        function showEmployees() {
+            console.log("showEmployees")
+            let dest = document.querySelector(".team_bottom");
+            let temp = document.querySelector("#employees");
+
+            dest.innerHTML = "";
+
+            theEmployees.forEach(employee => {
+                // Hvis intet ikon er klikket eller ikonet med id'et "alle" er klikket, viser den alle medarbejdere.
+                if (employeeFilter == "alle" || employeeFilter == employee.id) {
+                    console.log(employee);
+                    let clone = temp.cloneNode(true).content;
+
+                    clone.querySelector("img").src = employee.image.guid;
+                    clone.querySelector("h2").textContent = employee.title.rendered;
+                    clone.querySelector("h3").textContent = employee.job_description;
+                    clone.querySelector("p").innerHTML = employee.description;
+
+                    dest.appendChild(clone);
+                }
+            })
+        }
+
+        // Udskriver ID'et på det ikon der er klikket på i konsollen.
+        function filterEmployees() {
+            console.log("filterEmployees");
+            // Ændrer employeeFilter til det ID som den klikkede overskrift har, og kalder showEmployees med det ID.
+            employeeFilter = this.dataset.id;
+            showEmployees();
+        }
+    </script>
+</body></html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <!-- Globalmenu -->
+        <nav id="menu">
+            <!-- Klikbart logo, der går til forsiden -->
+            <img id="logo" src="imgs/bykop_logo-8.png">
+            <!-- Menupunkter -->
+            <div class="nav_links">
+                <a href="kopper.html">Produkter</a>
+                <a href="om_bykop.html">Om ByKop</a>
+                <a href="find_bykop.html">Find ByKop</a>
+                <a href="kontakt.html">Kontakt & FAQ</a>
+                <a href="erhverv.html">Erhverv</a>
+            </div>
+            <!-- Burgermenu -->
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <!-- Splashsektion med filtreringsknapper -->
+    <section id="splash_kopper">
+        <div class="arrow_left"></div>
+        <nav id="filter_buttons">
+            <div class="filter_button">
+                <img src="imgs/produkter.png" alt="">
+            </div>
+            <div class="filter_buttons"></div>
+        </nav>
+        <div class="skyline"></div>
+        <div class="arrow_right"></div>
+    </section>
+    <main>
+        <!-- Tom sektion hvor produkterne bliver hentet ind via JS -->
+        <section id="products"></section>
+    </main>
+    <!-- Templates -->
+    <template id="filter_button_template">
+        <div class="filter_button">
+            <img src="" alt="">
+        </div>
+    </template>
+    <template id="product_template">
+        <article class="product">
+            <div class="product_image">
+                <img src="" alt="">
+            </div>
+            <div class="product_text">
+                <h2></h2>
+                <p></p>
+            </div>
+        </article>
+    </template>
+    <footer></footer>
+    <script src="script.js"></script>
+    <script>
+        "use strict"
+
+        // Variabler
+        let thePage;
+        let theSkyline;
+        let theCategories;
+        let theProducts;
+
+        // Venter på at DOM'en er indlæst
+        document.addEventListener("DOMContentLoaded", start);
+
+
+
+        // Henter titlen på siden
+        async function start() {
+            console.log("getThePage");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/11";
+            let jsonData = await fetch(url);
+            thePage = await jsonData.json();
+            console.log(thePage);
+
+            document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
+            getTheCategories();
+        }
+
+        // Henter skyline grafikken fra WP
+        async function getTheSkyline() {
+            console.log("getTheSkyeline");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/121";
+            let jsonData = await fetch(url);
+            theSkyline = await jsonData.json();
+            console.log(theSkyline);
+
+            document.querySelector(".skyline").backgroundImage = `url(${theSkyline.splash_image.guid})`;
+        }
+
+        // Henter kategorier fra WP
+        async function getTheCategories() {
+            console.log("start");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/categories";
+            let jsonData = await fetch(url);
+            theCategories = await jsonData.json();
+            console.log(theCategories);
+
+            generateFilterButtons();
+            getTheProducts();
+        }
+
+        // Henter produkter fra WP
+        async function getTheProducts() {
+            console.log("getTheProducts");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/kop?per_page=100";
+            let jsonData = await fetch(url);
+            theProducts = await jsonData.json();
+            console.log(theProducts);
+            filterContent("alle");
+        }
+
+        // Genererer filtreringsknapper
+        function generateFilterButtons() {
+            console.log("generateFilterButtons");
+
+            let dest = document.querySelector(".filter_buttons");
+            let temp = document.querySelector("#filter_button_template");
+
+            // Tømmer indholdet af dest
+            dest.innerHTML = "";
+
+            // Definerer id for .filter_button og lytter efter klik på denne
+            document.querySelector(".filter_button").dataset.id = "alle";
+            document.querySelector(".filter_button").addEventListener("click", buttonClick);
+
+            // Looper igennem de enkelte kategorier
+            theCategories.forEach(category => {
+                // Definerer klonen
+                let clone = temp.cloneNode(true).content;
+
+                // Indholdet hentes fra WP og placeres i klonen
+                clone.querySelector("img").src = category.icon.guid;
+
+                // Definerer id for klonerne .filter_button og lytter efter klik på disse
+                clone.querySelector(".filter_button").dataset.id = category.id;
+                clone.querySelector(".filter_button").addEventListener("click", buttonClick);
+
+                // Sætter hver enkelt klon ind i DOM'en
+                dest.appendChild(clone);
+            })
+        }
+
+        // Henter ID fra klikket element og går til filterContent
+        function buttonClick() {
+            console.log("ID", this.dataset.id);
+            filterContent(this.dataset.id);
+        }
+
+        // Filtrerer dataen fra WP
+        function filterContent(theFilter) {
+            let filtered;
+
+            // Hvis ID'et er "alle" vises alle produkter
+            if (theFilter == "alle") {
+                filtered = theProducts;
+            }
+
+            // Viser de filtrede produkter ud fra kategori id'et
+            else {
+                filtered = theProducts.filter(product => product.categories[0] == theFilter);
+            }
+
+            showProducts(filtered);
+        }
+
+        // Viser produkterne i DOM'en
+        function showProducts(theFilteredJson) {
+            console.log("showProducts");
+            let dest = document.querySelector("#products");
+            let temp = document.querySelector("#product_template");
+
+            // Tømmer dest for indhold
+            dest.innerHTML = "";
+
+            // Lopper igennem produkterne
+            theFilteredJson.forEach(product => {
+                // Definerer klonen
+                let clone = temp.cloneNode(true).content;
+
+                // Indholdet fra WP placeres i klonen
+                clone.querySelector(".product_image img").src = product.image.guid;
+                clone.querySelector("h2").textContent = product.title.rendered;
+                clone.querySelector("p").innerHTML = product.description;
+
+                // Gør hver enkelt produkt klikbart
+                clone.querySelector(".product").addEventListener("click", function() {
+                    productClick(product.id);
+                })
+
+                // Sætter hver enkelt klon ind i DOM'en
+                dest.appendChild(clone);
+            })
+        }
+
+        // Navigerer til singleview.html med id'et fra det klikkede element som url parameter
+        function productClick(id) {
+            console.log(id);
+            location.href = "singleview.html?id=" + id;
+        }
+    </script>
+</body></html>

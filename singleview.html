@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <!-- Globalmenu -->
+        <nav id="menu">
+            <!-- Klikbart logo, der går til forsiden -->
+            <img id="logo" src="imgs/bykop_logo-8.png">
+            <!-- Menupunkter -->
+            <div class="nav_links">
+                <a href="kopper.html">Produkter</a>
+                <a href="om_bykop.html">Om ByKop</a>
+                <a href="find_bykop.html">Find ByKop</a>
+                <a href="kontakt.html">Kontakt & FAQ</a>
+                <a href="erhverv.html">Erhverv</a>
+            </div>
+            <!-- Burgermenu -->
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Sektion med singleview af produktet, der hentes via WP -->
+        <section id="singleview">
+            <div class="round_bg">
+                <img src="" alt="">
+            </div>
+            <div class="singleview_text">
+                <h2></h2>
+                <p></p>
+            </div>
+        </section>
+
+        <!-- Section med facts -->
+        <section id="facts">
+
+        </section>
+        <!-- Tilbage knap -->
+        <div class="back">Tilbage</div>
+
+        <!-- Templates -->
+        <template id="facts_template">
+            <article class="fact">
+                <h3></h3>
+                <p></p>
+            </article>
+        </template>
+    </main>
+    <footer></footer>
+    <script src="script.js"></script>
+    <script>
+        "use strict"
+
+        // Variabler
+        // Henter urlparametret fra det klikkede element i kopper.html
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get("id");
+        let theProduct;
+        let theFacts;
+
+        // Venter på at DOM'en er indlæst
+        document.addEventListener("DOMContentLoaded", getTheProduct);
+
+        // Henter data fra det specifikke produkt fra WP
+        async function getTheProduct() {
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/kop/" + id;
+            let jsonData = await fetch(url);
+            theProduct = await jsonData.json();
+
+            // Sætter titlen på siden til produktnavnet
+            document.querySelector("title").textContent = theProduct.title.rendered + " | ByKop";
+
+            // Sætter dataen ind i DOM'ens elementer
+            document.querySelector(".round_bg img").src = theProduct.image.guid;
+            document.querySelector(".singleview_text h2").textContent = theProduct.title.rendered;
+            document.querySelector(".singleview_text p").innerHTML = theProduct.description;
+
+            getTheFacts();
+        }
+
+        // Henter facts og tilhørende tekst fra WP
+        async function getTheFacts() {
+            console.log("getTheFacts");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/product_fact";
+            let jsonData = await fetch(url);
+            theFacts = await jsonData.json();
+            console.log(theFacts);
+            showTheFacts();
+        }
+
+        // Viser factsne i DOM'en
+        function showTheFacts() {
+            console.log("showTheFacts");
+
+            let dest = document.querySelector("#facts");
+            let temp = document.querySelector("#facts_template");
+
+            // Tømmer dest for indhold
+            dest.innerHTML = "";
+
+            // Looper igennem de enkelte facts
+            theFacts.forEach(fact => {
+                // Definerer klonen
+                let clone = temp.cloneNode(true).content;
+
+                // Indholdet hentes fra WP og placeres i klonen
+                clone.querySelector(".fact").style.backgroundImage = `url(${fact.image.guid})`;
+                clone.querySelector("h3").textContent = fact.title.rendered;
+                clone.querySelector("p").innerHTML = fact.description;
+
+                // Sætter hver enkelt klon ind i DOM'en
+                dest.appendChild(clone);
+            })
+        }
+        document.querySelector(".back").addEventListener("click", function() {
+            window.history.back();
+        });
+    </script>
+</body></html>
