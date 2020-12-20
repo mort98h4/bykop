@@ -333,6 +333,7 @@
         }
 
         >>>>>>>siw_style_personale
+
     </style>
 </head>
 
@@ -409,7 +410,7 @@
         <!-- Templates -->
         <template id="splash_texts_template">
             <article class="splash_text">
-                <h2></h2>
+                <h1></h1>
                 <p></p>
                 <h4 class="splash_button"></h4>
             </article>
@@ -510,7 +511,7 @@
                     console.log(icon);
                     let clone = temp.cloneNode(true).content;
 
-                    clone.querySelector("h2").textContent = icon.title.rendered;
+                    clone.querySelector("h1").textContent = icon.title.rendered;
                     clone.querySelector("p").innerHTML = icon.description;
                     clone.querySelector("h4").textContent = icon.button;
                     clone.querySelector("h4").dataset.id = icon.id;
@@ -594,5 +595,8 @@
                 dest.appendChild(clone);
             })
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

@@ -156,7 +156,7 @@
                 <img src="" alt="">
             </div>
             <div class="singleview_text">
-                <h2></h2>
+                <h1></h1>
                 <p></p>
             </div>
         </section>
@@ -202,7 +202,7 @@
 
             // Sætter dataen ind i DOM'ens elementer
             document.querySelector(".round_bg img").src = theProduct.image.guid;
-            document.querySelector(".singleview_text h2").textContent = theProduct.title.rendered;
+            document.querySelector(".singleview_text h1").textContent = theProduct.title.rendered;
             document.querySelector(".singleview_text p").innerHTML = theProduct.description;
 
             getTheFacts();
