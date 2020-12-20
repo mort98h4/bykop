@@ -43,6 +43,7 @@
             display: grid;
             grid-template-areas: "produkt""skyline";
             overflow-x: scroll;
+            scroll-behavior: smooth;
         }
 
         .skyline_test {
@@ -402,6 +403,18 @@
 
                 // Sætter hver enkelt klon ind i DOM'en
                 dest.appendChild(clone);
+            })
+
+            // Gør pilene i splash sektionen klikbarer
+            let splash = document.querySelector("#splash_kopper");
+
+            document.querySelector(".arrow_right").addEventListener("click", function() {
+                // Scroller splash sektionen 350px til højre
+                splash.scrollBy(365, 0);
+            });
+            document.querySelector(".arrow_left").addEventListener("click", function() {
+                // Scroller splash sektionen 350px til venstre
+                splash.scrollBy(-365, 0);
             })
         }
 
