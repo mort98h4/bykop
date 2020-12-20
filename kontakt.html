@@ -6,6 +6,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /*putter baggrundsbillede på splash*/
+        #splash_kontakt {
+            background-color: #D9CFC7;
+            background-image: url(imgs/baggundsbillede_splash.png);
+            width: 100%;
+            height: 800px;
+            background-position: 52%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-areas: "splash_top""splash_bottom"
+        }
+
+        /*styler skyline*/
+        .skyline_placeholder {
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            background-image: url(imgs/skyline4.png);
+            height: 200px;
+            width: 100vw;
+            background-position: 20%;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+
+        /*virker ikke, men css fjerner en spacing*/
+        .skyline {
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            height: 200px;
+            width: 90vw;
+            background-position: 0%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        /* styler teksten i splash*/
+        .splash_text {
+            grid-area: splash_top;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+
+        /*overskrifter til kontaktoplysninger*/
+        .splash_text h3 {
+            font-size: 25px;
+            margin-bottom: 0rem;
+            margin-top: 2rem;
+        }
+
+        /*kontakt container*/
+        .wp-block-group__inner-container {
+            margin-bottom: 4rem;
+        }
+
+        /*styler overskrift til FAQ's*/
+        .faq_head {
+            padding-left: 2rem;
+        }
+
+        /*styler filter knapper i om Bykop*/
+        .faq_headers h3 {
+            /*bredde*/
+            margin: 1px;
+            padding: 2rem;
+            /*farve og font*/
+            background-color: #D9CFC7;
+            font-size: 20px;
+        }
+
+        /*styler brødtekst*/
+        .faq_texts {
+            padding: 2rem;
+            /*farve og font*/
+            background-color: #FFFFFF;
+        }
+
+        @media (min-width: 768px) {
+
+            /*styler splashbillede*/
+            #splash_kontakt {
+                width: 100%;
+                height: 550px;
+            }
+
+            /*styler kontakt information*/
+            .wp-block-group__inner-container {
+                width: 500px;
+            }
+
+            .splash_text .wp-block-columns {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .splash_text .wp-block-columns .wp-block-column {
+                flex-basis: 300px;
+            }
+
+            .splash_text .wp-block-columns .wp-block-column:first-child {
+                padding-right: 2rem;
+            }
+
+            .splash_text .wp-block-columns .wp-block-column:last-child {
+                padding-left: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+
+            /*styler faq til desktop*/
+            #faq {
+                display: grid;
+                grid-template-areas: "head head""left_body right_body";
+                margin-bottom: 4rem;
+            }
+
+            .faq_head {
+                grid-area: head;
+            }
+
+            .faq_headers {
+                grid-area: left_body;
+                width: 400px;
+            }
+
+            .faq_header h3:hover {
+                background-color: #B3A390;
+            }
+
+            .faq_texts {
+                grid-area: right_body;
+            }
+
+            .splash_text {
+                max-width: 1024px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 1224px) {
+            .splash_text {
+                max-width: 1224px;
+            }
+
+            .faq_head {
+                padding-left: 5rem;
+            }
+
+            .faq_headers {
+                width: 600px;
+            }
+
+            .faq_header h3 {
+                padding-left: 5rem;
+            }
+
+            .faq_texts {
+                padding-right: 5rem
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -34,10 +203,12 @@
     <section id="splash_kontakt">
         <div class="splash_text"></div>
         <div class="skyline"></div>
+        <div class="skyline_placeholder"></div>
     </section>
     <main>
         <!-- Sektion med oplysninger, der hentes fra WP -->
         <section id="faq">
+            <h2 class="faq_head">FAQ</h2>
             <div class="faq_headers"></div>
             <div class="faq_texts"></div>
         </section>
@@ -76,7 +247,7 @@
             console.log(thePage);
 
             document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
-            document.querySelector("#splash_kontakt").style.backgroundImage = `url(${thePage.splash_image.guid})`;
+            /*document.querySelector("#splash_kontakt").style.backgroundImage = `url(${thePage.splash_image.guid})`;*/
             document.querySelector(".splash_text").innerHTML = thePage.content.rendered;
 
             getTheSkyline();
