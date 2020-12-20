@@ -371,6 +371,7 @@
 
             document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
             document.querySelector(".splash_text").innerHTML = thePage.content.rendered;
+            document.querySelector("#splash_ombykop").style.backgroundImage = `url(${thePage.splash_image.guid})`;
 
             getTheSkyline();
         }

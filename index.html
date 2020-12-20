@@ -300,6 +300,9 @@
                 margin: 0 auto;
             }
         }
+<<<<<<< HEAD
+
+=======
 */
 
         @media (min-width: 700px) {
@@ -327,6 +330,7 @@
                 margin-top: 200px;
             }
         }
+>>>>>>> siw_style_personale
     </style>
 </head>
 
@@ -456,10 +460,10 @@
             icon4.dataset.id = theIcons[0].id;
 
             // Ikon containerne gøres klikbarer
-            icon1.addEventListener("click", buttonClick);
-            icon2.addEventListener("click", buttonClick);
-            icon3.addEventListener("click", buttonClick);
-            icon4.addEventListener("click", buttonClick);
+            icon1.addEventListener("click", iconClick);
+            icon2.addEventListener("click", iconClick);
+            icon3.addEventListener("click", iconClick);
+            icon4.addEventListener("click", iconClick);
 
             getTheSkyline();
 
@@ -496,6 +500,8 @@
                     clone.querySelector("h2").textContent = icon.title.rendered;
                     clone.querySelector("p").innerHTML = icon.description;
                     clone.querySelector("h4").textContent = icon.button;
+                    clone.querySelector("h4").dataset.id = icon.id;
+                    clone.querySelector("h4").addEventListener("click", splashButtonClick);
 
                     dest.appendChild(clone);
                 }
@@ -503,11 +509,25 @@
         }
 
         // Udskriver ID'et på det ikon der er klikket på i konsollen.
-        function buttonClick() {
+        function iconClick() {
             console.log("ID", this.dataset.id);
             // Ændrer iconFilter til det ID som det klikkede ikon har, og kalder showTheSplashIcons med det ID.
             iconFilter = this.dataset.id;
             showTheSplashIcons();
+        }
+
+        // Sender brugeren videre til den relevante side
+        function splashButtonClick() {
+            console.log("ID2", this.dataset.id);
+            if (this.dataset.id == "101") {
+                location.href = "kopper.html";
+            } else if (this.dataset.id == "102") {
+                location.href = "kopper.html";
+            } else if (this.dataset.id == "103") {
+                location.href = "find_bykop.html";
+            } else if (this.dataset.id == "105") {
+                location.href = "om_bykop.html";
+            }
         }
 
         // Henter facts og tilhørende tekst fra WP
@@ -532,6 +552,9 @@
             document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
             document.querySelector(".splash_index_bottom").style.backgroundImage = `url(${thePage.splash_image.guid})`;
             document.querySelector("#about_index").innerHTML = thePage.content.rendered;
+            document.querySelector(".about_button").addEventListener("click", () => {
+                location.href = "om_bykop.html";
+            })
         }
 
         // Viser factsne i DOM'en
@@ -558,5 +581,8 @@
                 dest.appendChild(clone);
             })
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

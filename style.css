@@ -140,7 +140,6 @@ header {
     color: #F0F1F0;
     text-decoration: none;
     padding: 10px;
-    /*    display: block;*/
 }
 
 .burger {
@@ -164,7 +163,7 @@ header {
 }
 
 .line1 {
-    width: 23px;
+    width: 24px;
 }
 
 .line2 {
@@ -172,7 +171,7 @@ header {
 }
 
 .line3 {
-    width: 17px;
+    width: 16px;
 }
 
 .toggle .line1 {
@@ -187,7 +186,7 @@ header {
 .toggle .line3 {
     transform: rotate(45deg) translate(-6px, -7px);
     background-color: #F0F1F0;
-    width: 23px;
+    width: 24px;
 }
 
 .nav_active {
