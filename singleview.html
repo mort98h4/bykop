@@ -124,6 +124,7 @@
                 margin: 0;
             }
         }
+
     </style>
 </head>
 
@@ -132,7 +133,7 @@
         <!-- Globalmenu -->
         <nav id="menu">
             <!-- Klikbart logo, der går til forsiden -->
-            <img id="logo" src="imgs/bykop_logo-8.png">
+            <img id="logo" src="imgs/bykop_logo-8.png" alt="ByKop logo">
             <!-- Menupunkter -->
             <div class="nav_links">
                 <a href="kopper.html">Produkter</a>
@@ -202,6 +203,7 @@
 
             // Sætter dataen ind i DOM'ens elementer
             document.querySelector(".round_bg img").src = theProduct.image.guid;
+            document.querySelector(".round_bg img").alt = theProduct.image_alt_text;
             document.querySelector(".singleview_text h1").textContent = theProduct.title.rendered;
             document.querySelector(".singleview_text p").innerHTML = theProduct.description;
 
@@ -245,5 +247,8 @@
         document.querySelector(".back").addEventListener("click", function() {
             window.history.back();
         });
+
     </script>
-</body></html>
+</body>
+
+</html>

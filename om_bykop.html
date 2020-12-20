@@ -257,7 +257,7 @@
         <!-- Globalmenu -->
         <nav id="menu">
             <!-- Klikbart logo, der går til forsiden -->
-            <img id="logo" src="imgs/bykop_logo-8.png">
+            <img id="logo" src="imgs/bykop_logo-8.png" alt="ByKop logo">
             <!-- Menupunkter -->
             <div class="nav_links">
                 <a href="kopper.html">Produkter</a>
@@ -302,7 +302,7 @@
                 <nav id="filter_buttons">
 
                     <div class="filter_button" data-id="alle">
-                        <img src="imgs/team.png" alt="">
+                        <img src="imgs/team.png" alt="Team knap">
                     </div>
                     <div class="filter_buttons"></div>
 
@@ -464,6 +464,7 @@
             theEmployees.forEach(employee => {
                 let clone = temp.cloneNode(true).content;
                 clone.querySelector("img").src = employee.image.guid;
+                clone.querySelector("img").alt = employee.image_alt_text;
                 clone.querySelector(".filter_button").dataset.id = employee.id;
                 clone.querySelector(".filter_button").addEventListener("click", filterEmployees);
                 dest.appendChild(clone);
@@ -488,6 +489,7 @@
                     let clone = temp.cloneNode(true).content;
 
                     clone.querySelector("img").src = employee.image.guid;
+                    clone.querySelector("img").alt = employee.image_alt_text;
                     clone.querySelector("h2").textContent = employee.title.rendered;
                     clone.querySelector("h3").textContent = employee.job_description;
                     clone.querySelector("p").innerHTML = employee.description;

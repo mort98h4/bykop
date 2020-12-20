@@ -240,6 +240,7 @@
                 width: 500px;
             }
         }
+
     </style>
 
 </head>
@@ -249,7 +250,7 @@
         <!-- Globalmenu -->
         <nav id="menu">
             <!-- Klikbart logo, der går til forsiden -->
-            <img id="logo" src="imgs/bykop_logo-8.png">
+            <img id="logo" src="imgs/bykop_logo-8.png" alt="ByKop logo">
             <!-- Menupunkter -->
             <div class="nav_links">
                 <a href="kopper.html">Produkter</a>
@@ -273,7 +274,7 @@
 
         <nav id="filter_buttons">
             <div class="filter_button">
-                <img src="imgs/produkter.png" alt="">
+                <img src="imgs/produkter.png" alt="Produkter knap">
             </div>
             <div class="filter_buttons"></div>
         </nav>
@@ -395,6 +396,7 @@
 
                 // Indholdet hentes fra WP og placeres i klonen
                 clone.querySelector("img").src = category.icon.guid;
+                clone.querySelector("img").alt = category.icon_alt_text;
 
                 // Definerer id for klonerne .filter_button og lytter efter klik på disse
                 clone.querySelector(".filter_button").dataset.id = category.id;
@@ -444,6 +446,7 @@
 
                 // Indholdet fra WP placeres i klonen
                 clone.querySelector(".product_image img").src = product.image.guid;
+                clone.querySelector(".product_image img").alt = product.image_alt_text;
                 clone.querySelector("h2").textContent = product.title.rendered;
                 clone.querySelector("p").innerHTML = product.description;
 
@@ -462,5 +465,8 @@
             console.log(id);
             location.href = "singleview.html?id=" + id;
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
