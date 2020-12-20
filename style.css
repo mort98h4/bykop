@@ -267,3 +267,33 @@ footer .wp-block-group {
     }
 
 }
+
+@media (min-width: 1024px) {
+    .burger {}
+
+    .burger div {
+        height: 3px;
+        margin: 3px;
+    }
+
+    .line1 {
+        width: 34px;
+    }
+
+    .line2 {
+        width: 30px;
+    }
+
+    .line3 {
+        width: 26px;
+    }
+
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-6px, 5px);
+    }
+
+    .toggle .line3 {
+        width: 34px;
+        transform: rotate(45deg) translate(-7px, -7px);
+    }
+}
