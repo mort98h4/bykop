@@ -7,9 +7,9 @@
     <title></title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 
     <style>
         /*sætter flex på top section i splash*/
@@ -140,6 +140,7 @@
         /*-------------PRODUKTBILLEDE------------*/
         .splash_index_bottom {
             display: flex;
+
         }
 
         /*sætter størrelsen på rund bg af produktbillede*/
@@ -400,25 +401,73 @@
             }
         }
 
+        #about_index {
+            display: flex;
+            flex-direction: column-reverse;
+        }
 
+        iframe {
+            width: 100vw;
+            height: 50vw;
+        }
 
-<<<<<<< HEAD
-            .about_text .about_button {
-                pointer-events: visible;
-                cursor: pointer;
+        .about_text {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .about_text p {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            #about_index {
+                flex-direction: column;
             }
 
-            footer {
-                margin-top: 200px;
+            .about_text .wp-block-group__inner-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+
+            .about_text {
+                margin-top: -100px;
+                margin-bottom: 100px;
+                z-index: 3;
+            }
+
+            .about_text h4 {
+                margin-left: 4rem;
             }
         }
 
-        >>>>>>>siw_style_personale
+        @media (min-width: 1424px) {
+            .about_text {
+                margin-top: -200px;
+                margin-bottom: 200px;
 
-=======
-        /*-------------VIDEO------------*/
-        video {}
->>>>>>> siw_style_index3
+            }
+        }
+
+
+        /*styler font i splash på index*/
+        @media (min-width: 1200px) {
+            .splash_text h1 {
+                font-size: 60px;
+            }
+
+            .splash_text p {
+                font-size: 25px;
+                margin-bottom: 5rem;
+            }
+
+            .splash_text h4 {
+                width: 400px;
+                font-size: 25px;
+
+            }
+        }
     </style>
 </head>
 
@@ -689,8 +738,5 @@
                 dest.appendChild(clone);
             })
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

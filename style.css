@@ -11,6 +11,7 @@ body {
 h1 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 32px;
+    margin-bottom: 1rem;
     color: #0D4A01;
 }
 
@@ -23,7 +24,7 @@ h2 {
 
 h3 {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 20px;
+    font-size: 32px;
     margin-bottom: 1rem;
     color: #0D4A01;
 }
@@ -31,6 +32,7 @@ h3 {
 p {
     font-family: 'Roboto Slab', serif;
     font-size: 18px;
+    margin-bottom: 1rem;
     color: #0D4A01;
 }
 
@@ -45,6 +47,7 @@ h4 {
     display: flex;
     justify-content: center;
     font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 1rem;
 }
 
 */ @media (min-width: 1100px) {
