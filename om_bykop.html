@@ -147,6 +147,7 @@
             margin-top: 4rem;
             padding-bottom: 4rem;
             overflow-x: scroll;
+            scroll-behavior: smooth;
             border-bottom: 4rem solid #D9CFC7;
         }
 
@@ -248,7 +249,6 @@
             margin: 0 auto;
             margin-top: 5rem;
         }
-
     </style>
 </head>
 
@@ -470,6 +470,18 @@
                 dest.appendChild(clone);
             })
 
+            // Gør pilene i team sektionen klikbarer
+            let splash = document.querySelector("#filter_buttons");
+
+            document.querySelector(".arrow_right").addEventListener("click", function() {
+                // Scroller splash sektionen 350px til højre
+                splash.scrollBy(300, 0);
+            });
+            document.querySelector(".arrow_left").addEventListener("click", function() {
+                // Scroller splash sektionen 350px til venstre
+                splash.scrollBy(-300, 0);
+            })
+
             // Kalder funktionen showEmployees på samme måde, som hvis man klikker på employee ikonet med ID'et "alle".
             showEmployees(employeeFilter = "alle");
         }
@@ -506,8 +518,5 @@
             employeeFilter = this.dataset.id;
             showEmployees();
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
