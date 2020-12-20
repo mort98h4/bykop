@@ -8,27 +8,121 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* style på facts sektion*/
+        #singleview {
+            display: grid;
+            grid-template-areas: "single_left single_right"
+        }
+
+        /*styler baggrund til produkt*/
+        .round_bg {
+            grid-area: single_left;
+            height: 300px;
+            width: 300px;
+            background-color: #d9cfc8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-left: -130px;
+        }
+
+        /*styler produkt billede*/
+        .round_bg img {
+            width: 200px;
+        }
+
+        /*styler tekst til produkt*/
+        .singleview_text {
+            grid-area: single_right;
+            align-self: center;
+            margin: 1rem;
+        }
+
+        /* sætter fact til at være i grid*/
         #facts {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            grid-gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 5rem;
             max-width: 1200px;
             margin: 0 auto
         }
 
-
+        /*Styler fakta boksene*/
         .fact {
             height: 300px;
             width: 300px;
             background-position: center;
             background-repeat: no-repeat;
-            background-size: contain;
-
+            background-size: cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             margin: 0 auto;
+        }
+
+
+        @media (min-width: 768px) {
+
+            #facts {
+                margin-top: 4rem;
+                margin-bottom: 4rem;
+            }
+
+            /*sætter baggrund til produkt til nu størrelse*/
+            .round_bg {
+                height: 400px;
+                width: 400px;
+            }
+
+            .round_bg img {
+                width: 250px;
+                margin-right: 2rem;
+            }
+
+            .singleview_text {
+                margin: 4rem;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+
+            /*ændre størrelse og position*/
+            .round_bg {
+                height: 600px;
+                width: 600px;
+                margin-top: -10rem;
+                z-index: -1;
+            }
+
+            .round_bg img {
+                width: 350px;
+                margin-top: 10rem;
+            }
+
+            .fact {
+                height: 400px;
+                width: 400px;
+            }
+        }
+
+        @media (min-width: 1524px) {
+
+            #singleview {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .round_bg {
+                margin-top: 0rem;
+                margin-left: 0rem;
+                justify-content: center;
+
+            }
+
+            .round_bg img {
+                margin: 0;
+            }
         }
     </style>
 </head>

@@ -45,23 +45,9 @@
             }
         }
 
-        /*Styler video*/
-        video {
-            width: 100vw;
-            object-fit: cover;
-        }
-
-        @media (min-width: 700px) {
-            video {
-                width: 70%;
-                display: flex;
-                margin: 0 auto;
-            }
-        }
-
-        @media (min-width: 1424px) {
-            video {
-                width: 1200px;
+        @media (min-width: 1400px) {
+            .arrows {
+                display: none;
             }
         }
 
@@ -217,7 +203,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: flex-end;
-                margin-top: 120px;
+                margin-top: -60px;
                 margin-left: -160px;
                 z-index: -2
             }
@@ -254,21 +240,43 @@
             margin: 0 auto;
         }
 
+        /*Styler video section*/
+        video {
+            width: 100vw;
+            object-fit: cover;
+            margin-bottom:
+        }
+
+        #about_index {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
         .about_text {
             width: 300px;
             margin: 0 auto;
+            z-index: 2;
         }
 
         .about_text h2 {
-            margin-top: 2rem
-        }
-
-        .about_text .about_button {
-            margin-bottom: 5rem;
             margin-top: 2rem;
         }
 
-        @media (min-width: 1424px) {
+        .about_text p {
+            display: none;
+        }
+
+        .about_text .about_button {
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer {
+            margin-top: 100px;
+        }
+
+        /*
+        @media (min-width: 700px) {
             #facts {
                 grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             }
@@ -280,7 +288,7 @@
 
             .splash_text {
                 max-width: 600px;
-                margin-top: 250px;
+                margin-top: 100px;
             }
 
             .splash_text h2 {
@@ -292,7 +300,37 @@
                 margin: 0 auto;
             }
         }
+<<<<<<< HEAD
 
+=======
+*/
+
+        @media (min-width: 700px) {
+            .about_text {
+                width: 600px;
+                z-index: 2;
+                position: relative;
+                margin-top: -300px;
+                margin-right: -200px;
+                pointer-events: none;
+
+            }
+
+            #about_index {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .about_text .about_button {
+                pointer-events: visible;
+                cursor: pointer;
+            }
+
+            footer {
+                margin-top: 200px;
+            }
+        }
+>>>>>>> siw_style_personale
     </style>
 </head>
 
