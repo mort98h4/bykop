@@ -6,6 +6,250 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /*putter baggrundsbillede på splash*/
+        #splash_ombykop {
+            background-color: #D9CFC7;
+            background-image: url(imgs/baggundsbillede_splash.png);
+            width: 100%;
+            height: 800px;
+            background-position: 52%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-areas: "splash_top""splash_bottom"
+        }
+
+        /*styler text på splash*/
+        .splash_text {
+            grid-area: splash_top;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+
+        /*styler skyline*/
+        .skyline_placeholder {
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            background-image: url(imgs/skyline4.png);
+            height: 200px;
+            width: 100vw;
+            background-position: 20%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /*virker ikke, men css fjerner en spacing*/
+        .skyline {
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            height: 200px;
+            width: 90vw;
+            background-position: 0%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /*styler overskrift til About's*/
+        .about_head {
+            padding-left: 2rem;
+        }
+
+        /*styler filter knapper i om Bykop*/
+        .about_headers h3 {
+            /*bredde*/
+            margin: 1px;
+            padding: 2rem;
+            /*farve og font*/
+            background-color: #D9CFC7;
+            font-size: 20px;
+        }
+
+        /*styler brødtekst*/
+        .about_texts {
+            padding: 2rem;
+            /*farve og font*/
+            background-color: #FFFFFF;
+        }
+
+        @media (min-width: 768px) {
+            #splash_ombykop {
+                height: 500px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+
+            /*styler faq til desktop*/
+
+            #about {
+                display: grid;
+                grid-template-areas: "head head""left_body right_body";
+                margin-bottom: 4rem;
+            }
+
+            .about_head {
+                grid-area: head;
+            }
+
+            .about_headers {
+                grid-area: left_body;
+                width: 400px;
+            }
+
+            .about_header h3:hover {
+                background-color: #B3A390;
+            }
+
+            .about_texts {
+                grid-area: right_body;
+            }
+
+            .splash_text {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 1224px) {
+
+
+            .about_head {
+                padding-left: 5rem;
+            }
+
+            .about_headers {
+                width: 600px;
+            }
+
+            .about_header h3 {
+                padding-left: 5rem;
+            }
+
+            .about_texts {
+                padding-right: 5rem
+            }
+        }
+
+        /*sætter flex på filter*/
+        #filter_buttons,
+        .filter_buttons {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        /*sætter scroll på buttons*/
+        #filter_buttons {
+            margin-top: 4rem;
+            padding-bottom: 4rem;
+            overflow-x: scroll;
+            border-bottom: 4rem solid #D9CFC7;
+        }
+
+        /*styler alle filter ansatte*/
+        #filter_buttons img {
+            margin: 2rem;
+            width: 250px;
+            background-color: #F7F7F7;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        /*vender billede og tekst*/
+        .employee {
+            display: flex;
+            flex-direction: column-reverse;
+            margin-bottom: 10rem;
+            margin-top: 2rem;
+        }
+
+        /*styler alle ansatte*/
+        .employee_image img {
+            width: 250px;
+            background-color: #F7F7F7;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin: 0 auto;
+        }
+
+        /*styler tekst til ansatte*/
+        .employee_text {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 1rem;
+        }
+
+
+        /*morten*/
+        /* sætter hver anden ansatte til at flexe omvendt*/
+        @media (min-width: 768px) {
+            .employee {
+                display: flex;
+                flex-direction: row;
+                width: 80%;
+                margin: 0 auto;
+                margin-bottom: 10rem;
+                margin-top: 8rem;
+                justify-content: space-between;
+            }
+
+            .employee:nth-of-type(2) {
+                flex-direction: row-reverse;
+            }
+
+            .employee:nth-of-type(4) {
+                flex-direction: row-reverse;
+            }
+
+            .employee_text {
+                flex-basis: 300px;
+                margin: 0;
+            }
+
+            .employee_image img {
+                flex-basis: 300px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .employee_image img {
+                width: 350px;
+            }
+
+            .employee_text {
+                align-self: center;
+                flex-basis: 400px;
+            }
+
+            .employee {
+                max-width: 1000px;
+            }
+        }
+
+        .arrow img {
+            width: 50px;
+            height: 50px
+        }
+
+        .arrows {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            width: 90vw;
+            margin: 0 auto;
+            margin-top: 5rem;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -34,24 +278,37 @@
     <section id="splash_ombykop">
         <div class="splash_text"></div>
         <div class="skyline"></div>
+        <div class="skyline_placeholder"></div>
     </section>
     <main>
         <!-- Sektion med oplysninger, der hentes fra WP -->
         <section id="about">
+            <h2 class="about_head">Om ByKop</h2>
             <div class="about_headers"></div>
             <div class="about_texts"></div>
         </section>
         <!-- Sektion med medarbejdere, der hentes fra WP -->
         <section id="team">
+            <div class="arrows">
+                <div class="arrow_left arrow">
+                    <img src="imgs/arrow_left.svg" alt="pil_til_venstre">
+                </div>
+                <div class="arrow_right arrow">
+                    <img src="imgs/arrow_right.svg" alt="pil_til_hoejre">
+                </div>
+            </div>
             <div class="team_top">
-                <div class="arrow_left"></div>
+
                 <nav id="filter_buttons">
+
                     <div class="filter_button" data-id="alle">
                         <img src="imgs/team.png" alt="">
                     </div>
                     <div class="filter_buttons"></div>
+
                 </nav>
-                <div class="arrow_right"></div>
+
+
             </div>
             <div class="team_bottom">
 
@@ -246,5 +503,8 @@
             employeeFilter = this.dataset.id;
             showEmployees();
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
