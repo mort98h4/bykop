@@ -58,6 +58,7 @@
             display: grid;
             grid-template-areas: "container1 container2 container3 container4""skyline skyline skyline skyline";
             overflow-x: scroll;
+            scroll-behavior: smooth;
         }
 
         @media (min-width: 700px) {
@@ -330,7 +331,8 @@
                 margin-top: 200px;
             }
         }
->>>>>>> siw_style_personale
+
+        >>>>>>>siw_style_personale
     </style>
 </head>
 
@@ -465,8 +467,19 @@
             icon3.addEventListener("click", iconClick);
             icon4.addEventListener("click", iconClick);
 
-            getTheSkyline();
+            // Gør pilene i splash sektionen klikbarer
+            let splash = document.querySelector(".splash_section_top");
 
+            document.querySelector(".arrow_right").addEventListener("click", function() {
+                // Scroller splash sektionen 350px til højre
+                splash.scrollBy(350, 0);
+            });
+            document.querySelector(".arrow_left").addEventListener("click", function() {
+                // Scroller splash sektionen 350px til venstre
+                splash.scrollBy(-350, 0);
+            })
+
+            getTheSkyline();
             // Kalder showTheSplashIcons som hvis der er klikket på ikonet med id'et 101.
             showTheSplashIcons(iconFilter = "101");
         }
@@ -581,8 +594,5 @@
                 dest.appendChild(clone);
             })
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
