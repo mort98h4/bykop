@@ -15,6 +15,7 @@
     <style>
         /*putter baggrundsbillede på splash*/
         #splash_ombykop {
+            margin-top: 6rem;
             background-color: #D9CFC7;
             background-image: url(imgs/baggundsbillede_splash.png);
             width: 100%;
@@ -88,6 +89,7 @@
 
         @media (min-width: 1024px) {
 
+
             /*styler faq til desktop*/
 
             #about {
@@ -114,12 +116,15 @@
             }
 
             .splash_text {
-                max-width: 800px;
+                width: 800px;
                 margin: 0 auto;
             }
         }
 
         @media (min-width: 1224px) {
+            #splash_ombykop {
+                height: 800px;
+            }
 
 
             .about_head {
@@ -174,12 +179,17 @@
         }
 
         /*sætter scroll på buttons*/
+        .team_top {
+            border-bottom: 4rem solid #D9CFC7;
+        }
+
         #filter_buttons {
             margin-top: 4rem;
             padding-bottom: 4rem;
             overflow-x: scroll;
             scroll-behavior: smooth;
-            border-bottom: 4rem solid #D9CFC7;
+            margin: 0 auto;
+            max-width: 1600px;
         }
 
         /*styler alle filter ansatte*/
@@ -219,6 +229,11 @@
             margin-bottom: 1rem;
         }
 
+        @media (min-width: 1600px) {
+            #filter_buttons {
+                overflow-x: auto;
+            }
+        }
 
         /*morten*/
         /* sætter hver anden ansatte til at flexe omvendt*/
@@ -266,20 +281,26 @@
             }
         }
 
-        .arrow img {
-            width: 50px;
-            height: 50px
+        .arrows {
+            width: 100vw;
+            display: grid;
+            grid-template-areas: "arrow_left arrow_right";
+            justify-content: space-between;
+            margin-top: -330px;
+            margin-bottom: 330px;
+            position: relative;
+            cursor: none;
+            pointer-events: none;
         }
 
-        .arrows {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            width: 90vw;
-            margin: 0 auto;
-            margin-top: 5rem;
+        /*gør så man kan trykke på pile og baggrundsikoner*/
+        .arrows img {
+            width: 50px;
+            cursor: pointer;
+            pointer-events: visible;
+            margin: 15px;
         }
+
     </style>
 </head>
 
@@ -295,7 +316,8 @@
                 <a href="om_bykop.html">Om ByKop</a>
                 <a href="find_bykop.html">Find ByKop</a>
                 <a href="kontakt.html">Kontakt & FAQ</a>
-<!--                <a href="erhverv.html">Erhverv</a>-->            </div>
+                <!--                <a href="erhverv.html">Erhverv</a>-->
+            </div>
             <!-- Burgermenu -->
             <div class="burger">
                 <div class="line1"></div>
@@ -319,14 +341,7 @@
         </section>
         <!-- Sektion med medarbejdere, der hentes fra WP -->
         <section id="team">
-            <div class="arrows">
-                <div class="arrow_left arrow">
-                    <img src="imgs/arrow_left.svg" alt="pil_til_venstre">
-                </div>
-                <div class="arrow_right arrow">
-                    <img src="imgs/arrow_right.svg" alt="pil_til_hoejre">
-                </div>
-            </div>
+
             <div class="team_top">
 
                 <nav id="filter_buttons">
@@ -335,10 +350,15 @@
                         <img src="imgs/team.png" alt="Team knap">
                     </div>
                     <div class="filter_buttons"></div>
-
                 </nav>
-
-
+            </div>
+            <div class="arrows">
+                <div class="arrow_left arrow">
+                    <img src="imgs/arrow_left.svg" alt="pil_til_venstre">
+                </div>
+                <div class="arrow_right arrow">
+                    <img src="imgs/arrow_right.svg" alt="pil_til_hoejre">
+                </div>
             </div>
             <div class="team_bottom">
 
@@ -555,5 +575,8 @@
             employeeFilter = this.dataset.id;
             showEmployees();
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
