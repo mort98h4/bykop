@@ -19,6 +19,7 @@
             flex-wrap: wrap;
             overflow-x: scroll;
             scroll-behavior: smooth;
+
         }
 
         /*-------------IKONER--------------*/
@@ -37,7 +38,7 @@
             flex-direction: row;
             flex-wrap: nowrap;
             margin: 3rem;
-
+            cursor: pointer;
         }
 
 
@@ -45,7 +46,7 @@
         .splash_icon img {
             margin: 2rem;
             width: 200px;
-            cursor: pointer;
+
         }
 
         /*-------------PIGER--------------*/
@@ -99,7 +100,7 @@
             background-image: url(imgs/skyline4.png);
             height: 200px;
             width: 100vw;
-            max-width: 1800px;
+            max-width: 2000px;
             background-position: contain;
             background-repeat: no-repeat;
             background-size: cover;
@@ -144,9 +145,12 @@
         }
 
         /*-------------PRODUKTBILLEDE------------*/
+        #splash_index {
+            margin-top: 6rem;
+        }
+
         .splash_index_bottom {
             display: flex;
-
         }
 
         /*sætter størrelsen på rund bg af produktbillede*/
@@ -162,7 +166,7 @@
             margin-top: 150px;
         }
 
-        /*    sætter størrelse på produktbillede*/
+        /*sætter størrelse på produktbillede*/
         .round_bg img {
             width: 150px;
             height: 150px;
@@ -228,7 +232,7 @@
             .icons {
                 max-width: 1024px;
                 margin: 0 auto;
-                margin-bottom: rem;
+                margin-top: 6rem;
             }
 
             .chatacter_container {
@@ -307,9 +311,10 @@
 
             /**SPLASH SECTION BOTTOM**/
             .round_bg {
-                margin-left: -130px;
+                margin-left: 0px;
                 width: 800px;
                 height: 800px;
+                margin-top: -10px;
             }
 
             .round_bg img {
@@ -432,13 +437,12 @@
             }
 
             iframe {
-                width: 50vw;
+                width: 40vw;
                 height: 40vw;
             }
 
             .about_text {
                 width: 500px;
-                margin: 0 auto;
                 align-self: center;
             }
 
@@ -447,7 +451,52 @@
             }
         }
 
-        @media (min-width: 1424px) {}
+        @media (min-width: 1424px) {
+            #about_index {}
+
+            iframe {
+                width: 600px;
+                height: 600px;
+            }
+
+            .about_text {
+                width: 650px;
+                margin: 0 auto;
+                align-self: center;
+            }
+
+            .about_text p {
+                width: 650px;
+            }
+        }
+
+        @media (min-width: 2000px) {
+            #about_index {
+                justify-content: space-between;
+            }
+
+            iframe {
+                width: 800px;
+                height: 800px;
+            }
+
+            .about_text {
+                width: 850px;
+                margin: 0;
+                ;
+                align-self: center;
+            }
+
+            .about_text p {
+                width: 850px;
+            }
+        }
+
+        @media (min-width: 1424px) {
+            .skyline_placeholder {
+                height: 300px;
+            }
+        }
 
         /*styler font i splash på index*/
         @media (min-width: 1200px) {
@@ -480,7 +529,8 @@
                 <a href="om_bykop.html">Om ByKop</a>
                 <a href="find_bykop.html">Find ByKop</a>
                 <a href="kontakt.html">Kontakt & FAQ</a>
-<!--                <a href="erhverv.html">Erhverv</a>-->            </div>
+                <!--                <a href="erhverv.html">Erhverv</a>-->
+            </div>
             <!-- Burgermenu -->
             <div class="burger">
                 <div class="line1"></div>
