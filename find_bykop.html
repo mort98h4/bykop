@@ -12,22 +12,104 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
     <style>
-/*
-        header {
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        background-color: #F0F1F0;
-        }*/
+        #splash_find_bykop {
+            background-color: #D9CFC7;
+            background-image: url(imgs/baggundsbillede_splash.png);
+            width: 100%;
+            height: 800px;
+            background-position: 52%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /*            margin-bottom: 4rem;*/
+            display: grid;
+            grid-template-areas: "splash_top""splash_bottom"
+        }
 
+        /*styler skyline*/
+        .skyline_placeholder {
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            background-image: url(imgs/skyline4.png);
+            height: 200px;
+            width: 100vw;
+            background-position: 20%;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        /*virker ikke, men css fjerner en spacing*/
+        .skyline {
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            height: 200px;
+            width: 90vw;
+            background-position: 0%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* styler teksten i splash*/
+        .splash_text {
+            grid-area: splash_top;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+
+        /*overskrifter til kontaktoplysninger*/
+        .splash_text h3 {
+            font-size: 25px;
+            margin-bottom: 0rem;
+            margin-top: 2rem;
+        }
+
+        /*
         main {
             margin-top: 95px;
         }
+*/
 
         iframe {
             width: 100vw;
             height: 90vh;
         }
+
+        @media (min-width: 768px) {
+            #splash_find_bykop {
+                width: 100%;
+                height: 550px;
+            }
+
+            /*styler kontakt information*/
+            .splash_text .wp-block-group__inner-container {
+                width: 500px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .splash_text {
+                max-width: 1024px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 1224px) {
+            .splash_text {
+                max-width: 1224px;
+            }
+        }
+
+        #map {
+            margin: 0 auto;
+            background-image: url(imgs/map_dummy.png);
+            width: 80vw;
+            height: 45vw;
+            background-position: 52%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
     </style>
 </head>
 
@@ -43,7 +125,8 @@
                 <a href="om_bykop.html">Om ByKop</a>
                 <a href="find_bykop.html">Find ByKop</a>
                 <a href="kontakt.html">Kontakt & FAQ</a>
-<!--                <a href="erhverv.html">Erhverv</a>-->            </div>
+                <!--                <a href="erhverv.html">Erhverv</a>-->
+            </div>
             <!-- Burgermenu -->
             <div class="burger">
                 <div class="line1"></div>
@@ -52,9 +135,56 @@
             </div>
         </nav>
     </header>
+    <!-- Splash sektion -->
+    <section id="splash_find_bykop">
+        <div class="splash_text"></div>
+        <div class="skyline"></div>
+        <div class="skyline_placeholder"></div>
+    </section>
     <main>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.288802088574!2d12.599556115614243!3d55.666577906106674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652534830de4f09%3A0xe26a3cd836666101!2sVed%20S%C3%B8nderport%2018%2C%202300%20K%C3%B8benhavn!5e0!3m2!1sda!2sdk!4v1608414126470!5m2!1sda!2sdk" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <!--        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.288802088574!2d12.599556115614243!3d55.666577906106674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652534830de4f09%3A0xe26a3cd836666101!2sVed%20S%C3%B8nderport%2018%2C%202300%20K%C3%B8benhavn!5e0!3m2!1sda!2sdk!4v1608414126470!5m2!1sda!2sdk" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>-->
+        <section id="map">
+
+        </section>
     </main>
     <footer></footer>
     <script src="script.js"></script>
-</body></html>
+    <script>
+        "use strict"
+
+        let thePage;
+        let theSkyline;
+
+        // Venter på at DOM'en er indlæst
+        document.addEventListener("DOMContentLoaded", start);
+
+        // Henter siden Kontakt fra WP
+        async function start() {
+            console.log("start");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/154";
+            let jsonData = await fetch(url);
+            thePage = await jsonData.json();
+            console.log(thePage);
+
+            document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
+            document.querySelector("#splash_find_bykop").style.backgroundImage = `url(${thePage.splash_image.guid})`;
+            document.querySelector(".splash_text").innerHTML = thePage.content.rendered;
+
+            getTheSkyline()
+        }
+
+        // Henter skyline grafikken fra WP
+        async function getTheSkyline() {
+            console.log("getTheSkyline");
+            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/121";
+            let jsonData = await fetch(url);
+            theSkyline = await jsonData.json();
+            console.log(theSkyline);
+
+            document.querySelector(".skyline").backgroundImage = `url(${theSkyline.splash_image.guid})`;
+        }
+
+    </script>
+</body>
+
+</html>
