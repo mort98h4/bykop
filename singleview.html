@@ -15,7 +15,8 @@
     <style>
         #singleview {
             display: grid;
-            grid-template-areas: "single_left single_right"
+            grid-template-areas: "single_left single_right";
+            margin-top: 6rem;
         }
 
         /*styler baggrund til produkt*/
@@ -116,6 +117,7 @@
             #singleview {
                 max-width: 1200px;
                 margin: 0 auto;
+                margin-top: 6rem;
             }
 
             .round_bg {
@@ -139,8 +141,9 @@
             display: flex;
             justify-content: center;
             font-family: 'Ubuntu', sans-serif;
-            margin: 0 0 1rem 1rem;
+            margin-top: 2rem;
         }
+
     </style>
 </head>
 
@@ -156,7 +159,8 @@
                 <a href="om_bykop.html">Om ByKop</a>
                 <a href="find_bykop.html">Find ByKop</a>
                 <a href="kontakt.html">Kontakt & FAQ</a>
-<!--                <a href="erhverv.html">Erhverv</a>-->            </div>
+                <!--                <a href="erhverv.html">Erhverv</a>-->
+            </div>
             <!-- Burgermenu -->
             <div class="burger">
                 <div class="line1"></div>
@@ -174,6 +178,8 @@
             <div class="singleview_text">
                 <h1></h1>
                 <p></p>
+                <!-- Tilbage knap -->
+                <div class="back">Tilbage</div>
             </div>
         </section>
 
@@ -181,8 +187,7 @@
         <section id="facts">
 
         </section>
-        <!-- Tilbage knap -->
-        <div class="back">Tilbage</div>
+
 
         <!-- Templates -->
         <template id="facts_template">
@@ -262,5 +267,8 @@
         document.querySelector(".back").addEventListener("click", function() {
             window.history.back();
         });
+
     </script>
-</body></html>
+</body>
+
+</html>
