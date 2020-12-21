@@ -88,6 +88,7 @@
             background-color: #F7F7F7;
             border-radius: 50%;
             margin: 3rem;
+            cursor: pointer;
         }
 
         @media (min-width: 1024px) {
@@ -242,7 +243,6 @@
                 width: 500px;
             }
         }
-
     </style>
 
 </head>
@@ -312,6 +312,7 @@
             <div class="product_text">
                 <h2></h2>
                 <p></p>
+                <h4></h4>
             </div>
         </article>
     </template>
@@ -468,9 +469,10 @@
                 clone.querySelector(".product_image img").alt = product.image_alt_text;
                 clone.querySelector("h2").textContent = product.title.rendered;
                 clone.querySelector("p").innerHTML = product.description;
+                clone.querySelector("h4").textContent = product.button;
 
                 // Gør hver enkelt produkt klikbart, og sender parametret id med til funktionen productClick
-                clone.querySelector(".product").addEventListener("click", function() {
+                clone.querySelector("h4").addEventListener("click", function() {
                     productClick(product.id);
                 })
 
@@ -484,8 +486,5 @@
             console.log(id);
             location.href = "singleview.html?id=" + id;
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
