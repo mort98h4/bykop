@@ -224,13 +224,11 @@
 
             .product:last-child {
                 padding-bottom: 5rem;
-
             }
 
             .product:first-child {
                 padding-top: 5rem;
                 margin-top: 200px;
-
             }
 
             .product_image {
@@ -277,7 +275,7 @@
     <section id="splash_kopper">
 
         <nav id="filter_buttons">
-            <div class="filter_button pulse">
+            <div class="filter_button">
                 <img src="imgs/produkter.png" alt="Produkter knap">
             </div>
             <div class="filter_buttons"></div>
@@ -404,6 +402,11 @@
 
                 // Definerer id for klonerne .filter_button og lytter efter klik på disse
                 clone.querySelector(".filter_button").dataset.id = category.id;
+
+                document.querySelector(".filter_button").classList.add("pulse");
+                clone.querySelector(".filter_button").classList.add("pulse");
+
+
                 clone.querySelector(".filter_button").addEventListener("click", buttonClick);
 
                 // Sætter hver enkelt klon ind i DOM'en

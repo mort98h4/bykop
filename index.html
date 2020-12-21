@@ -37,6 +37,7 @@
             flex-direction: row;
             flex-wrap: nowrap;
             margin: 3rem;
+
         }
 
 
@@ -44,6 +45,7 @@
         .splash_icon img {
             margin: 2rem;
             width: 200px;
+            cursor: pointer;
         }
 
         /*-------------PIGER--------------*/
@@ -97,6 +99,7 @@
             background-image: url(imgs/skyline4.png);
             height: 200px;
             width: 100vw;
+            max-width: 1800px;
             background-position: contain;
             background-repeat: no-repeat;
             background-size: cover;
@@ -248,6 +251,8 @@
 
             .character {
                 height: 200px;
+                cursor: none;
+                pointer-events: none;
             }
 
             .character1 {
@@ -418,7 +423,6 @@
             width: 80%;
             margin: 0 auto;
         }
-
 
         @media (min-width: 1024px) {
             #about_index {
