@@ -140,6 +140,32 @@
         }
 
         /*sætter flex på filter*/
+        /*siw*/
+
+
+        /*
+        .filter_button {
+            animation: pulse 2s ease-in-out infinite;
+
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(.9);
+            }
+
+
+            50% {
+                transform: scale(1.0);
+            }
+
+            100% {
+                transform: scale(.9);
+
+            }
+*/
+
+
         #filter_buttons,
         .filter_buttons {
             display: flex;
@@ -306,7 +332,7 @@
 
                 <nav id="filter_buttons">
 
-                    <div class="filter_button pulse" data-id="alle">
+                    <div class="filter_button" data-id="alle">
                         <img src="imgs/team.png" alt="Team knap">
                     </div>
                     <div class="filter_buttons"></div>
@@ -465,6 +491,7 @@
             let dest = document.querySelector(".filter_buttons");
             let temp = document.querySelector("#filter_button_template");
 
+
             document.querySelector(".filter_button").addEventListener("click", filterEmployees);
 
             dest.innerHTML = "";
@@ -475,6 +502,8 @@
                 clone.querySelector("img").alt = employee.image_alt_text;
                 clone.querySelector(".filter_button").dataset.id = employee.id;
 
+                document.querySelector(".filter_button").classList.add("pulse");
+                clone.querySelector(".filter_button").classList.add("pulse");
                 clone.querySelector(".filter_button").addEventListener("click", filterEmployees);
                 dest.appendChild(clone);
             })
