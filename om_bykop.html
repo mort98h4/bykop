@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vores mål hos ByKop, er at forene alle to-go kaffeudbydere i større danske byer, i et fælles retursystem til genbrugelige to-go kopper.">
-    <title></title>
+    <title>Om ByKop | ByKop</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
@@ -15,129 +15,129 @@
     <style>
         /*putter baggrundsbillede på splash*/
         #splash_ombykop {
-        margin-top: 6rem;
-        background-color: #D9CFC7;
-        background-image: url(imgs/baggundsbillede_splash.png);
-        width: 100%;
-        height: 800px;
-        background-position: 52%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin-bottom: 4rem;
-        display: grid;
-        grid-template-areas: "splash_top""splash_bottom"
+            margin-top: 6rem;
+            background-color: #D9CFC7;
+            background-image: url(imgs/baggundsbillede_splash.png);
+            width: 100%;
+            height: 800px;
+            background-position: 52%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-areas: "splash_top""splash_bottom"
         }
 
         /*styler text på splash*/
         .splash_text {
-        grid-area: splash_top;
-        width: 80%;
-        margin: 0 auto;
-        padding-top: 50px;
+            grid-area: splash_top;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 50px;
         }
 
         /*styler skyline*/
         .skyline_placeholder {
-        grid-area: splash_bottom;
-        align-self: flex-end;
-        background-image: url(imgs/skyline4.png);
-        height: 200px;
-        width: 100vw;
-        background-position: 20%;
-        background-repeat: no-repeat;
-        background-size: cover;
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            background-image: url(imgs/skyline4.png);
+            height: 200px;
+            width: 100vw;
+            background-position: 20%;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         /*virker ikke, men css fjerner en spacing*/
         .skyline {
-        grid-area: splash_bottom;
-        align-self: flex-end;
-        height: 200px;
-        width: 90vw;
-        background-position: 0%;
-        background-repeat: no-repeat;
-        background-size: cover;
+            grid-area: splash_bottom;
+            align-self: flex-end;
+            height: 200px;
+            width: 90vw;
+            background-position: 0%;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         /*styler overskrift til About's*/
         .about_head {
-        padding-left: 2rem;
+            padding-left: 2rem;
         }
 
         /*styler filter knapper i om Bykop*/
         .about_headers h3 {
-        /*bredde*/
-        margin: 1px;
-        padding: 2rem;
-        /*farve og font*/
-        background-color: #D9CFC7;
-        font-size: 20px;
+            /*bredde*/
+            margin: 1px;
+            padding: 2rem;
+            /*farve og font*/
+            background-color: #D9CFC7;
+            font-size: 20px;
         }
 
         /*styler brødtekst*/
         .about_texts {
-        padding: 2rem;
-        /*farve og font*/
-        background-color: #FFFFFF;
+            padding: 2rem;
+            /*farve og font*/
+            background-color: #FFFFFF;
         }
 
         @media (min-width: 768px) {
-        #splash_ombykop {
-        height: 500px;
-        }
+            #splash_ombykop {
+                height: 500px;
+            }
         }
 
         @media (min-width: 1024px) {
 
 
-        /*styler faq til desktop*/
+            /*styler faq til desktop*/
 
-        #about {
-        display: grid;
-        grid-template-areas: "head head""left_body right_body";
-        margin-bottom: 4rem;
-        }
+            #about {
+                display: grid;
+                grid-template-areas: "head head""left_body right_body";
+                margin-bottom: 4rem;
+            }
 
-        .about_head {
-        grid-area: head;
-        }
+            .about_head {
+                grid-area: head;
+            }
 
-        .about_headers {
-        grid-area: left_body;
-        width: 400px;
-        }
+            .about_headers {
+                grid-area: left_body;
+                width: 400px;
+            }
 
-        .about_header h3:hover {
-        background-color: #B3A390;
-        }
+            .about_header h3:hover {
+                background-color: #B3A390;
+            }
 
-        .about_texts {
-        grid-area: right_body;
-        }
+            .about_texts {
+                grid-area: right_body;
+            }
 
-        .splash_text {
-        width: 800px;
-        margin: 0 auto;
-        }
+            .splash_text {
+                width: 800px;
+                margin: 0 auto;
+            }
         }
 
         @media (min-width: 1224px) {
 
-        .about_head {
-        padding-left: 5rem;
-        }
+            .about_head {
+                padding-left: 5rem;
+            }
 
-        .about_headers {
-        width: 600px;
-        }
+            .about_headers {
+                width: 600px;
+            }
 
-        .about_header h3 {
-        padding-left: 5rem;
-        }
+            .about_header h3 {
+                padding-left: 5rem;
+            }
 
-        .about_texts {
-        padding-right: 5rem
-        }
+            .about_texts {
+                padding-right: 5rem
+            }
         }
 
         /*sætter flex på filter*/
@@ -168,54 +168,54 @@
 
 
         #filter_buttons {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
         }
 
         .filter_buttons {
-        display: flex;
-        flex-direction: row-reverse;
-        flex-wrap: nowrap;
+            display: flex;
+            flex-direction: row-reverse;
+            flex-wrap: nowrap;
         }
 
         /*sætter scroll på buttons*/
         .team_top {
-        border-bottom: 4rem solid #D9CFC7;
+            border-bottom: 4rem solid #D9CFC7;
         }
 
         #filter_buttons {
-        margin-top: 4rem;
-        padding-bottom: 4rem;
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-        margin: 0 auto;
-        max-width: 1600px;
+            margin-top: 4rem;
+            padding-bottom: 4rem;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            margin: 0 auto;
+            max-width: 1600px;
         }
 
         /*styler alle filter ansatte*/
         #filter_buttons img {
-        margin: 2rem;
-        width: 250px;
-        background-color: #F7F7F7;
-        border-radius: 50%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        cursor: pointer;
+            margin: 2rem;
+            width: 250px;
+            background-color: #F7F7F7;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            cursor: pointer;
         }
 
         .filter_button {
-        opacity: 0.8;
+            opacity: 0.8;
         }
 
         .filter_button:hover {
-        opacity: 1;
+            opacity: 1;
         }
 
         #filter_buttons img:hover {
 
-        background-color: #F7F7F7;
+            background-color: #F7F7F7;
 
         }
 
@@ -223,106 +223,107 @@
 
         /*vender billede og tekst*/
         .employee {
-        display: flex;
-        flex-direction: column-reverse;
-        margin-bottom: 10rem;
-        margin-top: 2rem;
+            display: flex;
+            flex-direction: column-reverse;
+            margin-bottom: 10rem;
+            margin-top: 2rem;
         }
 
         /*styler alle ansatte*/
         .employee_image img {
-        width: 250px;
-        background-color: #F7F7F7;
-        border-radius: 50%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        margin: 0 auto;
+            width: 250px;
+            background-color: #F7F7F7;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin: 0 auto;
         }
 
         /*styler tekst til ansatte*/
         .employee_text {
-        width: 80%;
-        margin: 0 auto;
-        margin-bottom: 1rem;
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 1rem;
         }
 
         @media (min-width: 1600px) {
-        #filter_buttons {
-        overflow-x: auto;
-        }
+            #filter_buttons {
+                overflow-x: auto;
+            }
         }
 
         /*morten*/
         /* sætter hver anden ansatte til at flexe omvendt*/
         @media (min-width: 768px) {
-        .employee {
-        display: flex;
-        flex-direction: row;
-        width: 80%;
-        margin: 0 auto;
-        margin-top: 2rem;
-        margin-bottom: 4rem;
-        justify-content: space-between;
-        }
+            .employee {
+                display: flex;
+                flex-direction: row;
+                width: 80%;
+                margin: 0 auto;
+                margin-top: 2rem;
+                margin-bottom: 4rem;
+                justify-content: space-between;
+            }
 
-        .employee:nth-of-type(2) {
-        flex-direction: row-reverse;
-        }
+            .employee:nth-of-type(2) {
+                flex-direction: row-reverse;
+            }
 
-        .employee:nth-of-type(4) {
-        flex-direction: row-reverse;
-        }
+            .employee:nth-of-type(4) {
+                flex-direction: row-reverse;
+            }
 
-        .employee_text {
-        flex-basis: 300px;
-        margin: 0;
-        }
+            .employee_text {
+                flex-basis: 300px;
+                margin: 0;
+            }
 
-        .employee_image img {
-        flex-basis: 300px;
-        }
+            .employee_image img {
+                flex-basis: 300px;
+            }
         }
 
         @media (min-width: 1024px) {
-        .employee_image img {
-        width: 350px;
-        }
+            .employee_image img {
+                width: 350px;
+            }
 
-        .employee_text {
-        align-self: center;
-        flex-basis: 400px;
-        }
+            .employee_text {
+                align-self: center;
+                flex-basis: 400px;
+            }
 
-        .employee {
-        max-width: 950px;
-        }
+            .employee {
+                max-width: 950px;
+            }
         }
 
         .arrows {
-        width: 100vw;
-        display: grid;
-        grid-template-areas: "arrow_left arrow_right";
-        justify-content: space-between;
-        margin-top: -330px;
-        margin-bottom: 330px;
-        position: relative;
-        cursor: none;
-        pointer-events: none;
+            width: 100vw;
+            display: grid;
+            grid-template-areas: "arrow_left arrow_right";
+            justify-content: space-between;
+            margin-top: -330px;
+            margin-bottom: 330px;
+            position: relative;
+            cursor: none;
+            pointer-events: none;
         }
 
         /*gør så man kan trykke på pile og baggrundsikoner*/
         .arrows img {
-        width: 50px;
-        cursor: pointer;
-        pointer-events: visible;
-        margin: 15px;
+            width: 50px;
+            cursor: pointer;
+            pointer-events: visible;
+            margin: 15px;
         }
 
         .team_bottom {
-        display: flex;
-        flex-direction: column-reverse;
+            display: flex;
+            flex-direction: column-reverse;
         }
+
     </style>
 </head>
 
@@ -597,5 +598,8 @@
             employeeFilter = this.dataset.id;
             showEmployees();
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
