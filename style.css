@@ -150,17 +150,18 @@ header {
     background-color: #0D4A10;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 50%;
     transform: translateY(-100%);
     transition: transform 0.5s ease-in;
     overflow: hidden;
     padding-top: 70px;
+    padding-left: 1rem;
     z-index: 2;
 }
 
 .nav_links a {
     font-family: 'Roboto Slab', sans-serif;
+    font-size: 1.5rem;
     color: #F0F1F0;
     text-decoration: none;
     padding: 10px;
