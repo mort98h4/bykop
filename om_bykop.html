@@ -122,10 +122,6 @@
         }
 
         @media (min-width: 1224px) {
-            #splash_ombykop {
-                height: 800px;
-            }
-
 
             .about_head {
                 padding-left: 5rem;
@@ -171,10 +167,15 @@
 */
 
 
-        #filter_buttons,
-        .filter_buttons {
+        #filter_buttons {
             display: flex;
             flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .filter_buttons {
+            display: flex;
+            flex-direction: row-reverse;
             flex-wrap: nowrap;
         }
 
@@ -202,6 +203,14 @@
             flex-direction: row;
             flex-wrap: nowrap;
         }
+
+        #filter_buttons img:hover {
+
+            background-color: #F7F7F7;
+
+        }
+
+
 
         /*vender billede og tekst*/
         .employee {
@@ -243,8 +252,8 @@
                 flex-direction: row;
                 width: 80%;
                 margin: 0 auto;
-                margin-bottom: 10rem;
-                margin-top: 8rem;
+                margin-top: 2rem;
+                margin-bottom: 4rem;
                 justify-content: space-between;
             }
 
@@ -277,7 +286,7 @@
             }
 
             .employee {
-                max-width: 1000px;
+                max-width: 950px;
             }
         }
 
@@ -301,6 +310,11 @@
             margin: 15px;
         }
 
+        .team_bottom {
+            display: flex;
+            flex-direction: column-reverse;
+
+        }
     </style>
 </head>
 
@@ -575,8 +589,5 @@
             employeeFilter = this.dataset.id;
             showEmployees();
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
