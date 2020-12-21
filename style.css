@@ -139,7 +139,7 @@ header {
     flex-direction: column;
     align-items: center;
     width: 50%;
-    transform: translateX(100%);
+    transform: translateY(-100%);
     transition: transform 0.5s ease-in;
     overflow: hidden;
     padding-top: 70px;
@@ -214,6 +214,7 @@ footer p {
 footer {
     background-color: #092F0B;
     text-align: center;
+    padding-top: 2rem;
 }
 
 footer .wp-block-group {
