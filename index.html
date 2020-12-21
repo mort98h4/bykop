@@ -39,6 +39,7 @@
             margin: 3rem;
         }
 
+
         /*bestemmer størrelsen på ikonerne*/
         .splash_icon img {
             margin: 2rem;
@@ -64,7 +65,8 @@
             background-size: contain;
             align-self: end;
             margin-top: -150px;
-            margin-bottom: 1rem
+            margin-bottom: 1rem;
+            z-index: 1;
         }
 
         /*baggrundsbillede af pige der kigger*/
@@ -417,40 +419,31 @@
             margin: 0 auto;
         }
 
-        .about_text p {
-            display: none;
-        }
 
         @media (min-width: 1024px) {
             #about_index {
-                flex-direction: column;
-            }
-
-            .about_text .wp-block-group__inner-container {
                 display: flex;
                 flex-direction: row;
-                flex-wrap: nowrap;
+                margin-bottom: 4rem;
+            }
+
+            iframe {
+                width: 50vw;
+                height: 40vw;
             }
 
             .about_text {
-                margin-top: -100px;
-                margin-bottom: 100px;
-                z-index: 3;
+                width: 500px;
+                margin: 0 auto;
+                align-self: center;
             }
 
-            .about_text h4 {
-                margin-left: 4rem;
-            }
-        }
-
-        @media (min-width: 1424px) {
-            .about_text {
-                margin-top: -200px;
-                margin-bottom: 200px;
-
+            .about_text p {
+                width: 500px;
             }
         }
 
+        @media (min-width: 1424px) {}
 
         /*styler font i splash på index*/
         @media (min-width: 1200px) {
@@ -466,7 +459,6 @@
             .splash_text h4 {
                 width: 400px;
                 font-size: 25px;
-
             }
         }
     </style>
@@ -498,16 +490,16 @@
     <section id="splash_index">
         <div class="splash_section_top">
             <div class="icons">
-                <div class="splash_icon1 splash_icon">
+                <div class="splash_icon1 splash_icon pulse">
+                    <img src="" alt="" class="">
+                </div>
+                <div class="splash_icon2 splash_icon pulse">
                     <img src="" alt="">
                 </div>
-                <div class="splash_icon2 splash_icon">
+                <div class="splash_icon3 splash_icon pulse">
                     <img src="" alt="">
                 </div>
-                <div class="splash_icon3 splash_icon">
-                    <img src="" alt="">
-                </div>
-                <div class="splash_icon4 splash_icon">
+                <div class="splash_icon4 splash_icon pulse">
                     <img src="" alt="">
                 </div>
             </div>

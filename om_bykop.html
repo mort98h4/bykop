@@ -306,7 +306,7 @@
 
                 <nav id="filter_buttons">
 
-                    <div class="filter_button" data-id="alle">
+                    <div class="filter_button pulse" data-id="alle">
                         <img src="imgs/team.png" alt="Team knap">
                     </div>
                     <div class="filter_buttons"></div>
@@ -376,7 +376,10 @@
 
             document.querySelector("title").textContent = thePage.title.rendered + " | ByKop";
             document.querySelector(".splash_text").innerHTML = thePage.content.rendered;
-            document.querySelector("#splash_ombykop").style.backgroundImage = `url(${thePage.splash_image.guid})`;
+
+
+            /*henter det ikke?*/
+            /*document.querySelector("#splash_ombykop").style.backgroundImage = `url(${thePage.splash_image.guid})`;*/
 
             getTheSkyline();
         }
@@ -471,6 +474,7 @@
                 clone.querySelector("img").src = employee.image.guid;
                 clone.querySelector("img").alt = employee.image_alt_text;
                 clone.querySelector(".filter_button").dataset.id = employee.id;
+
                 clone.querySelector(".filter_button").addEventListener("click", filterEmployees);
                 dest.appendChild(clone);
             })
