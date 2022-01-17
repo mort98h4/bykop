@@ -255,7 +255,7 @@
         // Henter siden Kontakt fra WP
         async function start() {
             console.log("start");
-            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/15";
+            let url = "https://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/15";
             let jsonData = await fetch(url);
             thePage = await jsonData.json();
             console.log(thePage);
@@ -270,7 +270,7 @@
         // Henter skyline grafikken fra WP
         async function getTheSkyline() {
             console.log("getTheSkyeline");
-            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/121";
+            let url = "https://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/121";
             let jsonData = await fetch(url);
             theSkyline = await jsonData.json();
             console.log(theSkyline);
@@ -283,7 +283,7 @@
         // Henter FAQs fra WP
         async function getTheFaqs() {
             console.log("getTheFaqs");
-            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/faq";
+            let url = "https://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/faq";
             let jsonData = await fetch(url);
             theFaqs = await jsonData.json();
             console.log(theFaqs);

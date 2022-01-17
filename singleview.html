@@ -214,7 +214,7 @@
 
         // Henter data fra det specifikke produkt fra WP
         async function getTheProduct() {
-            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/kop/" + id;
+            let url = "https://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/kop/" + id;
             let jsonData = await fetch(url);
             theProduct = await jsonData.json();
 
@@ -233,7 +233,7 @@
         // Henter facts og tilhørende tekst fra WP
         async function getTheFacts() {
             console.log("getTheFacts");
-            let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/product_fact";
+            let url = "https://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/product_fact";
             let jsonData = await fetch(url);
             theFacts = await jsonData.json();
             console.log(theFacts);

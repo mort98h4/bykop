@@ -39,7 +39,7 @@ function start() {
 // Henter footeren fra WP, og indsætter indholdet i DOM'en
 async function getTheFooter() {
     console.log("getTheFooter");
-    let url = "http://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/104";
+    let url = "https://mortengross.dk/kea/10_eksamen_2_sem/bykop/wordpress/wp-json/wp/v2/pages/104";
     let jsonData = await fetch(url);
     theFooter = await jsonData.json();
     console.log(theFooter);
